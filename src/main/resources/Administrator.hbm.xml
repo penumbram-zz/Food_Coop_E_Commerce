@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--suppress ALL -->
+<hibernate-mapping>
+    <union-subclass name="main.java.Administrator" table="Administrator" extends="main.java.Member">
+        <meta attribute="class-description">
+            This class contains the administrator details.
+        </meta>
+
+        <!--<property name="firstName" column="first_name" type="string"/>
+        <property name="lastName" column="last_name" type="string"/>
+        <property name="password" column="password" type="string"/>
+        <property name="addressLine1" column="address_line_1" type="string"/>
+        <property name="addressLine2" column="address_line_2" type="string"/>
+        <property name="city" column="city" type="string"/>
+        <property name="birthDate" column="birth_date" type="date"/>
+        <property name="phoneNumber" column="phone_number" type="string"/>
+        <property name="timestamp" column="timestamp" type="date"/>-->
+        <property name="rank" column="rank" type="integer"/>
+    </union-subclass>
+</hibernate-mapping>

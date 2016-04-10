@@ -29,7 +29,7 @@ public class TestServlet extends HttpServlet {
         out.println("<h1>Test Servlet 2</h1>");
         Session session = Main.getSession();
         out.println("<h1>Test Servlet 3</h1>");
-        this.createFCUser(out,session);
+        this.createAdministrator(out,session);
         out.println("</body>");
         out.println("</html>");
         out.close();
@@ -58,7 +58,7 @@ public class TestServlet extends HttpServlet {
         }
     }
 
-    private void createFCUser(PrintWriter out,Session session) {
+    private void createAdministrator(PrintWriter out,Session session) {
         Transaction tx = null;
         Integer userID = null;
         out.println("<h1>Test Servlet 4</h1>");
@@ -66,7 +66,8 @@ public class TestServlet extends HttpServlet {
             out.println("<h2>Trying.. 1</h2>");
             tx = session.beginTransaction();
             out.println("<h2>Trying.. 2</h2>");
-            FCUser user = new FCUser("Tolga", "Caner", "1234");
+            Administrator user = new Administrator("Tolga", "Caner", "1234");
+            user.setRank(1);
             out.println("<h2>Trying.. 3</h2>");
             userID = (Integer) session.save(user);
             out.println("<h2>Trying.. 4</h2>");

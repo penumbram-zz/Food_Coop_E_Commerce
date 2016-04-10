@@ -8,37 +8,78 @@
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
       <schema id="1" name="foodcoopdb"/>
-      <table id="2" parent="1" name="Test"/>
-      <table id="3" parent="1" name="FCUser"/>
-      <column id="4" parent="2" name="PersonID">
-        <data-type>int(11)</data-type>
-      </column>
-      <column id="5" parent="2" name="LastName">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="6" parent="2" name="FirstName">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="7" parent="2" name="Address">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="8" parent="2" name="City">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="9" parent="3" name="id">
+      <table id="2" parent="1" name="Member"/>
+      <table id="3" parent="1" name="Administrator"/>
+      <column id="4" parent="2" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="10" parent="3" name="first_name">
+      <column id="5" parent="2" name="first_name">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="11" parent="3" name="last_name">
+      <column id="6" parent="2" name="last_name">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="12" parent="3" name="password">
+      <column id="7" parent="2" name="password">
         <data-type>varchar(255)</data-type>
       </column>
-      <key id="13" parent="3" name="PRIMARY">
+      <column id="8" parent="2" name="address_line_1">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="9" parent="2" name="address_line_2">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="10" parent="2" name="city">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="11" parent="2" name="birth_date">
+        <data-type>date</data-type>
+      </column>
+      <column id="12" parent="2" name="phone_number">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="13" parent="2" name="timestamp">
+        <data-type>date</data-type>
+      </column>
+      <key id="14" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="15" parent="3" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="16" parent="3" name="first_name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="17" parent="3" name="last_name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="18" parent="3" name="password">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="19" parent="3" name="address_line_1">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="20" parent="3" name="address_line_2">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="21" parent="3" name="city">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="22" parent="3" name="birth_date">
+        <data-type>date</data-type>
+      </column>
+      <column id="23" parent="3" name="phone_number">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="24" parent="3" name="timestamp">
+        <data-type>date</data-type>
+      </column>
+      <column id="25" parent="3" name="rank">
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="26" parent="3" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
