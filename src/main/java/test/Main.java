@@ -1,4 +1,4 @@
-package main.java;
+package test;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;

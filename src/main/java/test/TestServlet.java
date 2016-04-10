@@ -1,11 +1,11 @@
-package main.java;
+package test;
 
+import javax.servlet.annotation.WebServlet;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 /**
  * Created by tolgacaner on 05/04/16.
  */
-@WebServlet(name = "TestServlet")
+@WebServlet(name = "test.TestServlet")
 public class TestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

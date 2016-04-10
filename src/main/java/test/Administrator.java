@@ -1,4 +1,4 @@
-package main.java;
+package test;
 
 /**
  * Created by tolgacaner on 06/04/16.
