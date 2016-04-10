@@ -29,6 +29,36 @@ public class TestServlet extends HttpServlet {
         out.println("<h1>Test Servlet 2</h1>");
         Session session = Main.getSession();
         out.println("<h1>Test Servlet 3</h1>");
+        this.createFCUser(out,session);
+        out.println("</body>");
+        out.println("</html>");
+        out.close();
+    }
+
+    private void createMember(PrintWriter out,Session session) {
+        Transaction tx = null;
+        Integer memberID = null;
+        out.println("<h1>Test Servlet 4</h1>");
+        try{
+            out.println("<h2>Trying.. 1</h2>");
+            tx = session.beginTransaction();
+            out.println("<h2>Trying.. 2</h2>");
+            Member member = new Member("Tolga", "Caner", "1234");
+            out.println("<h2>Trying.. 3</h2>");
+            memberID = (Integer) session.save(member);
+            out.println("<h2>Trying.. 4</h2>");
+            tx.commit();
+            out.println("<h2>"+ "Wrote:" + member.getFirstName() + "Lastname:" + member.getLastName() + "Password:" + member.getPassword() + "</h2>");
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+            out.println(e.getStackTrace().toString());
+        }finally {
+            session.close();
+        }
+    }
+
+    private void createFCUser(PrintWriter out,Session session) {
         Transaction tx = null;
         Integer userID = null;
         out.println("<h1>Test Servlet 4</h1>");
@@ -49,10 +79,6 @@ public class TestServlet extends HttpServlet {
         }finally {
             session.close();
         }
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
     }
-
 
 }
