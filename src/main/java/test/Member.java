@@ -16,11 +16,12 @@ public class Member extends AbstractTimestampEntity {
         onCreate();
     }
 
-    public Member(String fname, String lname, String password) {
+    public Member(String fname, String lname, String password,String addressLine1) {
         onCreate();
         this.firstName = fname;
         this.lastName = lname;
         this.password = password;
+        this.addressLine1 = addressLine1;
     }
 
     @Id

@@ -91,17 +91,19 @@
                           <tr>
                               <th>ID.</th>
                               <th>Name</th>
-                              <th>Address</th>
-                              <th>Email</th>
+                              <th>Surname</th>
+                              <th>Password</th>
+                              <th>Address Line 1</th>
                               <th width="20%"></th>
                           </tr>
                       </thead>
                       <tbody>
                           <tr ng-repeat="u in ctrl.users">
                               <td><span ng-bind="u.id"></span></td>
-                              <td><span ng-bind="u.username"></span></td>
-                              <td><span ng-bind="u.address"></span></td>
-                              <td><span ng-bind="u.email"></span></td>
+                              <td><span ng-bind="u.firstName"></span></td>
+                              <td><span ng-bind="u.lastName"></span></td>
+                              <td><span ng-bind="u.password"></span></td>
+                              <td><span ng-bind="u.addressLine1"></span></td>
                               <td>
                               <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
                               </td>

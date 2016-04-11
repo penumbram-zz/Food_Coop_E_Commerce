@@ -43,7 +43,7 @@ public class TestServlet extends HttpServlet {
             out.println("<h2>Trying.. 1</h2>");
             tx = session.beginTransaction();
             out.println("<h2>Trying.. 2</h2>");
-            Member member = new Member("Tolga", "Caner", "1234");
+            Member member = new Member("Tolga", "Caner", "1234","Maslak mahallesi etc.");
             out.println("<h2>Trying.. 3</h2>");
             memberID = (Integer) session.save(member);
             out.println("<h2>Trying.. 4</h2>");

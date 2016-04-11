@@ -5,7 +5,7 @@ package test;
  */
 public class Administrator extends Member {
     public Administrator(String fname, String lname, String pword) {
-        super(fname,lname,pword);
+        super(fname,lname,pword,"");
         onCreate();
     }
 
