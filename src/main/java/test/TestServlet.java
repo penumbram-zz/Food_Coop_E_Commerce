@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 /**
  * Created by tolgacaner on 05/04/16.
  */
-@WebServlet(name = "test.TestServlet")
+@WebServlet(name = "test")
 public class TestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -43,13 +43,13 @@ public class TestServlet extends HttpServlet {
             out.println("<h2>Trying.. 1</h2>");
             tx = session.beginTransaction();
             out.println("<h2>Trying.. 2</h2>");
-            Member member = new Member("Tolga", "Caner", "1234","Maslak mahallesi etc.");
+            Member member = new Member("Tolga", "Caner", "1234","Maslak mahallesi etc.","Apartman numarası etc.");
             out.println("<h2>Trying.. 3</h2>");
             memberID = (Integer) session.save(member);
             out.println("<h2>Trying.. 4</h2>");
             tx.commit();
             out.println("<h2>"+ "Wrote:" + member.getFirstName() + "Lastname:" + member.getLastName() + "Password:" + member.getPassword() + "</h2>");
-        }catch (HibernateException e) {
+        } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();
             out.println(e.getStackTrace().toString());

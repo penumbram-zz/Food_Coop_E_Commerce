@@ -10,9 +10,9 @@ public interface UserService {
 
 	Member findByName(String name);
 	
-	void saveUser(Member user);
+	void saveUser(Member member);
 	
-	void updateUser(Member user);
+	void updateUser(Member member);
 	
 	void deleteUserById(long id);
 
@@ -20,6 +20,6 @@ public interface UserService {
 	
 	void deleteAllUsers();
 	
-	public boolean isUserExist(Member user);
+	public boolean isUserExist(Member member);
 	
 }

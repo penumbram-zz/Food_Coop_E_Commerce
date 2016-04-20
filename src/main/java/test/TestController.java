@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TestController {
 
     @RequestMapping("MainPage")
-    public String test() {
+    public String mainPage() {
         return "UserManagement";
     }
+
 }

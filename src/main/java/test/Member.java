@@ -16,12 +16,13 @@ public class Member extends AbstractTimestampEntity {
         onCreate();
     }
 
-    public Member(String fname, String lname, String password,String addressLine1) {
+    public Member(String fname, String lname, String password,String addressLine1,String addressLine2) {
         onCreate();
         this.firstName = fname;
         this.lastName = lname;
         this.password = password;
         this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
     }
 
     @Id
@@ -35,6 +36,8 @@ public class Member extends AbstractTimestampEntity {
     private Date birthDate;
     private String phoneNumber;
     private Date timestamp;
+    private String about;
+    private String photoUrl;
 
     public int getId() {
         return id;
@@ -114,5 +117,20 @@ public class Member extends AbstractTimestampEntity {
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
+    }
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

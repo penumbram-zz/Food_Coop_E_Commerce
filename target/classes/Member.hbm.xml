@@ -21,5 +21,7 @@
         <property name="birthDate" column="birth_date" type="date"/>
         <property name="phoneNumber" column="phone_number" type="string"/>
         <property name="timestamp" column="timestamp" type="date"/>
+        <property name="about" column="about" type="string"/>
+        <property name="photoUrl" column="photo_url" type="string"/>
     </class>
 </hibernate-mapping>

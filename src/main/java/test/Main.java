@@ -21,7 +21,7 @@ public class Main {
     static {
         try {
             Configuration configuration = new Configuration();
-            configuration.configure("main/resources/hibernate.cfg.xml");
+            configuration.configure("hibernate.cfg.xml");
 
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
             ourSessionFactory = configuration.buildSessionFactory(serviceRegistry);

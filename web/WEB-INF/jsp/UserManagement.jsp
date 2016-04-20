@@ -36,11 +36,12 @@
               <div class="formcontainer">
                   <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
                       <input type="hidden" ng-model="ctrl.user.id" />
+
                       <div class="row">
                           <div class="form-group col-md-12">
-                              <label class="col-md-2 control-lable" for="file">Name</label>
+                              <label class="col-md-2 control-lable" for="file">First Name</label>
                               <div class="col-md-7">
-                                  <input type="text" ng-model="ctrl.user.username" name="uname" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
+                                  <input type="text" ng-model="ctrl.user.firstName" name="uname" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
                                   <div class="has-error" ng-show="myForm.$dirty">
                                       <span ng-show="myForm.uname.$error.required">This is a required field</span>
                                       <span ng-show="myForm.uname.$error.minlength">Minimum length required is 3</span>
@@ -49,26 +50,70 @@
                               </div>
                           </div>
                       </div>
-                        
-                      
+
                       <div class="row">
                           <div class="form-group col-md-12">
-                              <label class="col-md-2 control-lable" for="file">Address</label>
+                              <label class="col-md-2 control-lable" for="file">Last Name</label>
                               <div class="col-md-7">
-                                  <input type="text" ng-model="ctrl.user.address" class="form-control input-sm" placeholder="Enter your Address. [This field is validation free]"/>
+                                  <input type="text" ng-model="ctrl.user.lastName" class="form-control input-sm" placeholder="Enter your surname"/>
                               </div>
                           </div>
                       </div>
 
                       <div class="row">
                           <div class="form-group col-md-12">
-                              <label class="col-md-2 control-lable" for="file">Email</label>
+                              <label class="col-md-2 control-lable" for="file">Password</label>
                               <div class="col-md-7">
-                                  <input type="email" ng-model="ctrl.user.email" name="email" class="email form-control input-sm" placeholder="Enter your Email" required/>
+                                  <input type="password" ng-model="ctrl.user.password" name="password" class="email form-control input-sm" placeholder="Enter your password." required/>
                                   <div class="has-error" ng-show="myForm.$dirty">
                                       <span ng-show="myForm.email.$error.required">This is a required field</span>
                                       <span ng-show="myForm.email.$invalid">This field is invalid </span>
                                   </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="file">Address Line 1</label>
+                              <div class="col-md-7">
+                                  <input type="text" ng-model="ctrl.user.addressLine1" name="address_line_1" class="username form-control input-sm" placeholder="Type here..." required/>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="file">Address Line 2</label>
+                              <div class="col-md-7">
+                                  <input type="text" ng-model="ctrl.user.addressLine2" name="address_line_2" class="username form-control input-sm" placeholder="Type here..." required/>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="file">City</label>
+                              <div class="col-md-7">
+                                  <input type="text" ng-model="ctrl.user.city" name="city" class="username form-control input-sm" placeholder="Type here..."/>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="file">Phone Number</label>
+                              <div class="col-md-7">
+                                  <input type="text" ng-model="ctrl.user.phone_number" name="phone_number" class="username form-control input-sm" placeholder="Type here..."/>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="file">About</label>
+                              <div class="col-md-7">
+                                  <input type="text" ng-model="ctrl.user.about" name="about" class="username form-control input-sm" placeholder="Type here..."/>
                               </div>
                           </div>
                       </div>
@@ -79,6 +124,8 @@
                               <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
                           </div>
                       </div>
+
+
                   </form>
               </div>
           </div>
@@ -94,6 +141,7 @@
                               <th>Surname</th>
                               <th>Password</th>
                               <th>Address Line 1</th>
+                              <th>Address Line 2</th>
                               <th width="20%"></th>
                           </tr>
                       </thead>
@@ -104,6 +152,10 @@
                               <td><span ng-bind="u.lastName"></span></td>
                               <td><span ng-bind="u.password"></span></td>
                               <td><span ng-bind="u.addressLine1"></span></td>
+                              <td><span ng-bind="u.addressLine2"></span></td>
+                              <td><span ng-bind="u.city"></span></td>
+                              <td><span ng-bind="u.phone_number"></span></td>
+                              <td><span ng-bind="u.about"></span></td>
                               <td>
                               <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
                               </td>

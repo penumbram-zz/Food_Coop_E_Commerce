@@ -5,9 +5,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import test.Main;
 import test.Member;
 
 @Service("userService")
@@ -16,74 +20,96 @@ public class UserServiceImpl implements UserService{
 	
 	private static final AtomicLong counter = new AtomicLong();
 	
-	private static List<Member> users;
+	private static List<Member> members;
 	
 	static{
-		users= populateDummyUsers();
+	//	members= populateDummyUsers();
+		Session session = Main.getSession();
+		Query query = session.createQuery("from Member");
+		members = query.list();
 	}
 
 	public List<Member> findAllUsers() {
-		return users;
+		return members;
 	}
 	
 	public Member findById(long id) {
-		for(Member user : users){
-			if(user.getId() == id){
-				return user;
+		for(Member member : members){
+			if(member.getId() == id){
+				return member;
 			}
 		}
 		return null;
 	}
 	
 	public Member findByName(String name) {
-		for(Member user : users){
-			if(user.getFirstName().equalsIgnoreCase(name)){
-				return user;
+		for(Member member : members){
+			if(member.getFirstName().equalsIgnoreCase(name)){
+				return member;
 			}
 		}
 		return null;
 	}
 	
-	public void saveUser(Member user) {
-		user.setId((int) counter.incrementAndGet());
-		users.add(user);
+	public void saveUser(Member member) {
+		member.setId(nextId());
+		members.add(member);
+		Session session = Main.getSession();
+		Transaction tx = session.beginTransaction();
+		session.save(member);
+		tx.commit();
+		session.close();
+
 	}
 
-	public void updateUser(Member user) {
-		int index = users.indexOf(user);
-		users.set(index, user);
+	public void updateUser(Member member) {
+		int index = members.indexOf(member);
+		members.set(index, member);
+		Session session = Main.getSession();
+		Transaction tx = session.beginTransaction();
+		session.update(member);
+		tx.commit();
+		session.close();
 	}
 
 	public void deleteUserById(long id) {
-		
-		for (Iterator<Member> iterator = users.iterator(); iterator.hasNext(); ) {
-			Member user = iterator.next();
-		    if (user.getId() == id) {
+		for (Iterator<Member> iterator = members.iterator(); iterator.hasNext(); ) {
+			Member member = iterator.next();
+		    if (member.getId() == id) {
 		        iterator.remove();
+				Session session = Main.getSession();
+				Transaction tx = session.beginTransaction();
+				Main.getSession().delete(member);
+				tx.commit();
+				session.close();
 		    }
 		}
 	}
 
-	public boolean isUserExist(Member user) {
-		return findByName(user.getFirstName())!=null;
+	public boolean isUserExist(Member member) {
+		return findByName(member.getFirstName())!=null;
 	}
 	
 	public void deleteAllUsers(){
-		users.clear();
+		members.clear();
 	}
 
 	private static List<Member> populateDummyUsers(){
-		List<Member> users = new ArrayList<Member>();
-		Member member1 = new Member("Sam", "Wise", "password","Address Line 1 of 1");
-		member1.setId(1);
-		Member member2 = new Member("Tomy", "Alan", "password","Address Line 1 of 2");
-		member2.setId(2);
-		Member member3 = new Member("Kelly", "Price", "password","Address Line 1 of 3");
-		member3.setId(3);
-		users.add(member1);
-		users.add(member2);
-		users.add(member3);
-		return users;
+		List<Member> members = new ArrayList<Member>();
+		Member member1 = new Member("Sam", "Wise", "123456","Banana Av. Onion Street","24 SmallVille 10018");
+		member1.setId(nextId());
+		Member member2 = new Member("Bilbo", "Baggins", "mineonlymine","Banana Av. Monkey Street","57 SmallVille 10018");
+		member2.setId(nextId());
+		Member member3 = new Member("Franz", "Ferdinand", "niceshot1914","Pear Av. Seed Street","109 SmallVille 10018");
+		member3.setId(nextId());
+		members.add(member1);
+		members.add(member2);
+		members.add(member3);
+		return members;
+	}
+
+	private static int nextId() {
+		return (int) counter.incrementAndGet();
 	}
 
 }
