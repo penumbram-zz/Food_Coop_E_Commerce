@@ -16,4 +16,9 @@ public class TestController {
         return "UserManagement";
     }
 
+    @RequestMapping("Welcome")
+    public String welcomePage() {
+        return "Welcome";
+    }
+
 }
