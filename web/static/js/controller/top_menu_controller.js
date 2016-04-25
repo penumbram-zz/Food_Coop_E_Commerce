@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('myApp', []).controller("TopMenuCtrl",function ($scope) {
-
-
+App.controller("TopMenuCtrl",function ($scope) {
 
     $scope.opts = [
         {value: 1, text: "Home" ,id: "topmenu_li_home"},

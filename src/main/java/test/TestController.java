@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class TestController {
 
-    @RequestMapping("MainPage")
+    @RequestMapping("UserManagement")
     public String mainPage() {
         return "UserManagement";
     }
 
-    @RequestMapping("Welcome")
+    @RequestMapping("FoodCoopApp")
     public String welcomePage() {
         return "Welcome";
     }

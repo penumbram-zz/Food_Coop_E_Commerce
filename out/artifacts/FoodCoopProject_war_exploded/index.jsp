@@ -15,7 +15,7 @@
   <%
     // New location to be redirected
 
-    String site = new String("/Welcome");
+    String site = new String("/FoodCoopApp");
     response.setStatus(response.SC_MOVED_TEMPORARILY);
     response.setHeader("Location", site);
   %>

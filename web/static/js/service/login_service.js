@@ -8,9 +8,10 @@ App.factory('LoginService', ['$http', '$q', function($http, $q){
 
     return {
         login: function(email,pw) {
-            return $http.get('http://localhost:8080/login?email='+email+'&password='+pw)
+            return $http.get('http://localhost:8080/login/email='+email+'&password='+pw)
                 .then(
                     function(response){
+                        console.log("response here");
                         return response.data;
                     },
                     function(errResponse){
@@ -18,7 +19,7 @@ App.factory('LoginService', ['$http', '$q', function($http, $q){
                         return $q.reject(errResponse);
                     }
                 );
-        }
-    };
+            }
+        };
 
 }]);

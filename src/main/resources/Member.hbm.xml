@@ -14,6 +14,7 @@
         </id>
         <property name="firstName" column="first_name" type="string"/>
         <property name="lastName" column="last_name" type="string"/>
+        <property name="email" column="email" type="string" unique="true"/>
         <property name="password" column="password" type="string"/>
         <property name="addressLine1" column="address_line_1" type="string"/>
         <property name="addressLine2" column="address_line_2" type="string"/>

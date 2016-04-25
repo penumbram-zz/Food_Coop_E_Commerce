@@ -17,17 +17,15 @@ import java.util.List;
 @Transactional
 public class LoginService {
 
-    public void login(String username, String password) {
+    public Member login(String username, String password) {
         Session session = Main.getSession();
-        Query query = session.createQuery("from Member WHERE Member.email ==" + username);
-        List<Member> members = query.list();
+        String loginQuery = "FROM Member M WHERE M.email = '" + username + "' AND M.password = '" + password + "'";
+        Query query = session.createQuery(loginQuery);
+        List<Member> member = query.list();
 
-        if (members.size() == 1) {
-            if (members.get(0).getPassword() == password) {
-                //successful login
-            }
-        } else {
-
+        if (member.size() == 1) {
+            return member.get(0);
         }
+        return null;
     }
 }

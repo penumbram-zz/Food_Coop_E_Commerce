@@ -44,51 +44,60 @@
       <column id="14" parent="2" name="photo_url">
         <data-type>varchar(255)</data-type>
       </column>
-      <key id="15" parent="2" name="PRIMARY">
+      <column id="15" parent="2" name="birth_date">
+        <data-type>date</data-type>
+      </column>
+      <column id="16" parent="2" name="email">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="17" parent="2" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="16" parent="3" name="id">
+      <column id="18" parent="3" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="17" parent="3" name="first_name">
+      <column id="19" parent="3" name="first_name">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="18" parent="3" name="last_name">
+      <column id="20" parent="3" name="last_name">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="19" parent="3" name="password">
+      <column id="21" parent="3" name="password">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="20" parent="3" name="address_line_1">
+      <column id="22" parent="3" name="address_line_1">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="21" parent="3" name="address_line_2">
+      <column id="23" parent="3" name="address_line_2">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="22" parent="3" name="city">
+      <column id="24" parent="3" name="city">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="23" parent="3" name="birth_date">
+      <column id="25" parent="3" name="birth_date">
         <data-type>date</data-type>
       </column>
-      <column id="24" parent="3" name="phone_number">
+      <column id="26" parent="3" name="phone_number">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="25" parent="3" name="timestamp">
+      <column id="27" parent="3" name="timestamp">
         <data-type>date</data-type>
       </column>
-      <column id="26" parent="3" name="about">
+      <column id="28" parent="3" name="about">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="27" parent="3" name="photo_url">
+      <column id="29" parent="3" name="photo_url">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="28" parent="3" name="rank">
+      <column id="30" parent="3" name="rank">
         <data-type>int(11)</data-type>
       </column>
-      <key id="29" parent="3" name="PRIMARY">
+      <column id="31" parent="3" name="email">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="32" parent="3" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

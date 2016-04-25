@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+import service.user.LoginService;
 import service.user.UserService;
 
 import java.util.List;
@@ -18,7 +19,8 @@ import java.util.List;
 public class FoodCoopRestController {
     @Autowired
     UserService userService;  //Service which will do all data retrieval/manipulation work
-
+    @Autowired
+    LoginService loginService;
 
     //-------------------Retrieve All Users--------------------------------------------------------
 
@@ -119,4 +121,14 @@ public class FoodCoopRestController {
         userService.deleteAllUsers();
         return new ResponseEntity<Member>(HttpStatus.NO_CONTENT);
     }
+
+    //-------------------Login Trial--------------------------------------------------------
+
+    @RequestMapping(value = "/login/email={email}&password={password}", method = RequestMethod.GET)
+    public ResponseEntity<Member> login(@PathVariable("email") String email, @PathVariable("password") String password) {
+        Member member = loginService.login(email,password);
+
+        return new ResponseEntity<Member>(member, HttpStatus.OK);
+    }
+
 }

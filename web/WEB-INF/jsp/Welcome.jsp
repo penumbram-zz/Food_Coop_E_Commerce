@@ -8,7 +8,7 @@
       <link rel="stylesheet" href="/static/css/cssmenu.css">
   </head>
   <body ng-app="myApp">
-  <div ng-app ng-controller="TopMenuCtrl">
+  <div ng-controller="TopMenuCtrl">
       <div id='cssmenu'>
           <ul>
               <li ng-class="{active: opt.id === idSelectedMenuItem, last: opt.id == 'topmenu_li_contact'}" ng-repeat="opt in opts" ng-click="setItemSelected(opt.id)">
@@ -17,28 +17,33 @@
           </ul>
       </div>
       <div ng-switch on="idSelectedMenuItem">
-          <div ng-switch-when="topmenu_li_home">
-              <div style="width: 300px;" ng-controller="LoginController as ctrl">
+          <div ng-switch-when="topmenu_li_home" ng-controller="LoginController as ctrl">
+              <div style="width: 300px;" ng-hide="ctrl.success">
                   <div class="login">
                       <h1>Login</h1>
-                      <form name="form" ng-submit="ctrl.login()" role="form">
+                      <form name="form" ng-submit="ctrl.login(user)" role="form">
                           <div class="form-group">
                               <label for="username">Username</label>
                               <i class="fa fa-key"></i>
-                              <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+                              <input type="text" name="username" id="username" class="form-control" ng-model="user.username" required />
                               <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
                           </div>
                           <div class="form-group">
                               <label for="password">Password</label>
                               <i class="fa fa-lock"></i>
-                              <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+                              <input type="password" name="password" id="password" class="form-control" ng-model="user.password" required />
                               <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
                           </div>
+                          <span ng-show="!ctrl.success" class="has-error">Wrong Credentials</span>
                           <div class="form-actions">
                               <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Login</button>
                           </div>
                       </form>
                   </div>
+              </div>
+              <div ng-show="ctrl.success">
+                  <h1>Welcome, {{ctrl.user.first_name}} {{ctrl.user.last_name}}</h1>
+                  <h2>Feel free to build more of this website whenever you find time.</h2>
               </div>
           </div>
           <div ng-switch-when="topmenu_li_product"><h1>Product Div</h1></div>
@@ -49,6 +54,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
   <script src="<c:url value='/static/js/app.js' />"></script>
   <script src="<c:url value='/static/js/controller/top_menu_controller.js' />"></script>
+  <script src="<c:url value='/static/js/service/login_service.js' />"></script>
   <script src="<c:url value='/static/js/controller/login_controller.js' />"></script>
   </body>
 </html>

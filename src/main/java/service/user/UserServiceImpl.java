@@ -79,9 +79,10 @@ public class UserServiceImpl implements UserService{
 		        iterator.remove();
 				Session session = Main.getSession();
 				Transaction tx = session.beginTransaction();
-				Main.getSession().delete(member);
+				session.delete(member);
 				tx.commit();
 				session.close();
+				break;
 		    }
 		}
 	}

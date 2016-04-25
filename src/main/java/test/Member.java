@@ -29,6 +29,7 @@ public class Member extends AbstractTimestampEntity {
     private int id;
     private String firstName;
     private String lastName;
+    private String email;
     private String password;
     private String addressLine1;
     private String addressLine2;
@@ -132,5 +133,13 @@ public class Member extends AbstractTimestampEntity {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
