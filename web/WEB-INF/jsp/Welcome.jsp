@@ -46,7 +46,33 @@
                   <h2>Feel free to build more of this website whenever you find time.</h2>
               </div>
           </div>
-          <div ng-switch-when="topmenu_li_product"><h1>Product Div</h1></div>
+          <div ng-switch-when="topmenu_li_product" ng-controller="ProductController as pCtrl">
+              <h1>Products</h1>
+              <div>
+                  <table class="table table-hover">
+                      <thead>
+                      <tr>
+                          <th>Product Name</th>
+                          <th>Product Description</th>
+                          <th>Photo Url</th>
+                          <th>Price</th>
+                          <th>Sell Unit</th>
+                          <th>Quantity</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr ng-repeat="p in pCtrl.products">
+                          <td><span ng-bind="p.productName"></span></td>
+                          <td><span ng-bind="p.productDescription"></span></td>
+                          <td><img style="height:100px; width:auto;" ng-src="{{p.photoUrl}}"></td>
+                          <td><span ng-bind="p.price"></span></td>
+                          <td><span ng-bind="p.sellUnit"></span></td>
+                          <td><span ng-bind="p.quantity"></span></td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
           <div ng-switch-when="topmenu_li_coop"><h1>Co-Op Div</h1></div>
           <div ng-switch-when="topmenu_li_contact"><h1>Contact Div</h1></div>
       </div>
@@ -56,5 +82,7 @@
   <script src="<c:url value='/static/js/controller/top_menu_controller.js' />"></script>
   <script src="<c:url value='/static/js/service/login_service.js' />"></script>
   <script src="<c:url value='/static/js/controller/login_controller.js' />"></script>
+  <script src="<c:url value='/static/js/service/product_service.js' />"></script>
+  <script src="<c:url value='/static/js/controller/product_controller.js' />"></script>
   </body>
 </html>

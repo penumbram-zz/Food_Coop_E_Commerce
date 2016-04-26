@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+import service.ProductService;
 import service.user.LoginService;
 import service.user.UserService;
 
@@ -17,10 +18,18 @@ import java.util.List;
  */
 @RestController
 public class FoodCoopRestController {
+    //Services which will do all data retrieval/manipulation work
     @Autowired
-    UserService userService;  //Service which will do all data retrieval/manipulation work
+    UserService userService;
     @Autowired
     LoginService loginService;
+    @Autowired
+    ProductService productService;
+
+
+    //-------------------Users---------------------------------------------------------------------
+    //-------------------Users---------------------------------------------------------------------
+    //-------------------Users---------------------------------------------------------------------
 
     //-------------------Retrieve All Users--------------------------------------------------------
 
@@ -122,6 +131,14 @@ public class FoodCoopRestController {
         return new ResponseEntity<Member>(HttpStatus.NO_CONTENT);
     }
 
+    //-------------------Users---------------------------------------------------------------------
+    //-------------------Users---------------------------------------------------------------------
+    //-------------------Users---------------------------------------------------------------------
+
+    //-------------------Login---------------------------------------------------------------------
+    //-------------------Login---------------------------------------------------------------------
+    //-------------------Login---------------------------------------------------------------------
+
     //-------------------Login Trial--------------------------------------------------------
 
     @RequestMapping(value = "/login/email={email}&password={password}", method = RequestMethod.GET)
@@ -130,5 +147,26 @@ public class FoodCoopRestController {
 
         return new ResponseEntity<Member>(member, HttpStatus.OK);
     }
+
+    //-------------------Login---------------------------------------------------------------------
+    //-------------------Login---------------------------------------------------------------------
+    //-------------------Login---------------------------------------------------------------------
+
+    //-------------------Product---------------------------------------------------------------------
+    //-------------------Product---------------------------------------------------------------------
+    //-------------------Product---------------------------------------------------------------------
+
+    @RequestMapping(value = "/product/", method = RequestMethod.GET)
+    public ResponseEntity<List<Product>> getAllProducts() {
+        List<Product> products = productService.getAllProducts();
+        if(products.isEmpty()){
+            return new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+    }
+
+    //-------------------Product---------------------------------------------------------------------
+    //-------------------Product---------------------------------------------------------------------
+    //-------------------Product---------------------------------------------------------------------
 
 }

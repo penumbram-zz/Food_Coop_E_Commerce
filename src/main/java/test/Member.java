@@ -27,6 +27,7 @@ public class Member extends AbstractTimestampEntity {
 
     @Id
     private int id;
+    private Date timestamp;
     private String firstName;
     private String lastName;
     private String email;
@@ -36,7 +37,6 @@ public class Member extends AbstractTimestampEntity {
     private String city;
     private Date birthDate;
     private String phoneNumber;
-    private Date timestamp;
     private String about;
     private String photoUrl;
 

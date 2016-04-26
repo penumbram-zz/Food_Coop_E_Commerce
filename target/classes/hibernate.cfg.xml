@@ -16,5 +16,6 @@
         <property name="show_sql">true</property>
         <mapping class="test.Member" resource="Member.hbm.xml"/>
         <mapping class="test.Administrator" resource="Administrator.hbm.xml"/>
+        <mapping class="test.Product" resource="Product.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

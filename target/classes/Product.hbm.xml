@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--suppress ALL -->
+<hibernate-mapping>
+    <class name="test.Product" table="Product">
+        <meta attribute="class-description">
+            This class contains the product details.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="increment"/>
+        </id>
+        <property name="productName" column="product_name" type="string"/>
+        <property name="productDescription" column="product_description" type="string"/>
+        <property name="photoUrl" column="photo_url" type="string" />
+        <property name="price" column="price" type="string"/>
+        <property name="sellUnit" column="sell_unit" type="string"/>
+        <property name="quantity" column="quantity" type="string"/>
+        <property name="timestamp" column="timestamp" type="date"/>
+    </class>
+</hibernate-mapping>
