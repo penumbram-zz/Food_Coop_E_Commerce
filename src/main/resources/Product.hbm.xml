@@ -5,7 +5,7 @@
 
 <!--suppress ALL -->
 <hibernate-mapping>
-    <class name="test.Product" table="Product">
+    <class name="rest.Product" table="Product">
         <meta attribute="class-description">
             This class contains the product details.
         </meta>
@@ -19,5 +19,6 @@
         <property name="sellUnit" column="sell_unit" type="string"/>
         <property name="quantity" column="quantity" type="string"/>
         <property name="timestamp" column="timestamp" type="date"/>
+        <many-to-one name="producer" class="rest.Producer" cascade="save-update" ></many-to-one>
     </class>
 </hibernate-mapping>

@@ -5,7 +5,7 @@
 
 <!--suppress ALL -->
 <hibernate-mapping>
-    <union-subclass name="test.Administrator" table="Administrator" extends="test.Member">
+    <union-subclass name="rest.Administrator" table="Administrator" extends="rest.Member">
         <meta attribute="class-description">
             This class contains the administrator details.
         </meta>

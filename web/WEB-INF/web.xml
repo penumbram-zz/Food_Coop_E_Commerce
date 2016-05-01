@@ -32,7 +32,7 @@
 
     <servlet-mapping>
         <servlet-name>Servlet Name For Demo1</servlet-name>
-        <url-pattern>/test.TestServlet</url-pattern>
+        <url-pattern>/rest.TestServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <description>JAX-WS endpoint</description>

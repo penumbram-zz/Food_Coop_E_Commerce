@@ -1,4 +1,4 @@
-package test;
+package rest;
 
 import javax.servlet.annotation.WebServlet;
 import org.hibernate.HibernateException;
@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 /**
  * Created by tolgacaner on 05/04/16.
  */
-@WebServlet(name = "test")
+@WebServlet(name = "rest")
 public class TestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

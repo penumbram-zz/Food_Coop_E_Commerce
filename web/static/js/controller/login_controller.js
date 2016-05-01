@@ -8,7 +8,7 @@ App.controller('LoginController', ['$scope', 'LoginService', function ($scope, L
             self.success = null;
 
     self.test = function () {
-        console.log("test function called");
+        console.log("rest function called");
     }
 
     self.login = function(user){

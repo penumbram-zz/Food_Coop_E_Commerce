@@ -1,4 +1,4 @@
-package test;
+package rest;
 
 /**
  * Created by tolgacaner on 06/04/16.
@@ -10,6 +10,9 @@ public class Administrator extends Member {
     }
 
     private Integer rank;
+
+    public Administrator() {
+    }
 
     public Integer getRank() {
         return rank;

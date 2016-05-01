@@ -1,7 +1,7 @@
 package service.user;
 
 import java.util.List;
-import test.Member;
+import rest.Member;
 
 
 public interface UserService {

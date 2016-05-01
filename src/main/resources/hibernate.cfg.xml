@@ -14,8 +14,10 @@
         <property name="hibernate.connection.useUnicode">true</property>
         <property name="hibernate.connection.characterEncoding">UTF-8</property>
         <property name="show_sql">true</property>
-        <mapping class="test.Member" resource="Member.hbm.xml"/>
-        <mapping class="test.Administrator" resource="Administrator.hbm.xml"/>
-        <mapping class="test.Product" resource="Product.hbm.xml"/>
+        <mapping class="rest.Member" resource="Member.hbm.xml"/>
+        <mapping class="rest.Administrator" resource="Administrator.hbm.xml"/>
+        <mapping class="rest.Product" resource="Product.hbm.xml"/>
+        <mapping class="rest.Producer" resource="Producer.hbm.xml"/>
+        <mapping class="rest.ProductCategory" resource="ProductCategory.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

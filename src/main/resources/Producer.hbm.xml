@@ -5,24 +5,26 @@
 
 <!--suppress ALL -->
 <hibernate-mapping>
-    <class name="rest.Member" table="Member">
+    <union-subclass name="rest.Producer" table="Producer" extends="rest.Member">
         <meta attribute="class-description">
-            This class contains the member details.
+            This class contains the producer details.
         </meta>
-        <id name="id" type="int" column="id">
-            <generator class="increment"/>
-        </id>
-        <property name="firstName" column="first_name" type="string"/>
+
+        <!--<property name="firstName" column="first_name" type="string"/>
         <property name="lastName" column="last_name" type="string"/>
-        <property name="email" column="email" type="string" unique="true"/>
         <property name="password" column="password" type="string"/>
         <property name="addressLine1" column="address_line_1" type="string"/>
         <property name="addressLine2" column="address_line_2" type="string"/>
         <property name="city" column="city" type="string"/>
         <property name="birthDate" column="birth_date" type="date"/>
         <property name="phoneNumber" column="phone_number" type="string"/>
-        <property name="timestamp" column="timestamp" type="date"/>
-        <property name="about" column="about" type="string"/>
-        <property name="photoUrl" column="photo_url" type="string"/>
-    </class>
+        <property name="timestamp" column="timestamp" type="date"/>-->
+        <property name="companyName" column="company_name" type="string"/>
+        <property name="farmsInformation" column="farms_info" type="string"/>
+        <list name="productCategories" cascade="all">
+            <key column="id"/>
+            <list-index column="idx"/>
+            <one-to-many class="rest.ProductCategory"/>
+        </list>
+    </union-subclass>
 </hibernate-mapping>

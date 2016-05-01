@@ -1,6 +1,4 @@
-package test;
-
-import org.springframework.beans.factory.annotation.Autowired;
+package rest;
 
 import javax.persistence.*;
 import java.util.Date;

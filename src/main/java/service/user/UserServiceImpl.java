@@ -10,9 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import test.Main;
-import test.Member;
+import rest.Main;
+import rest.Member;
 
 @Service("userService")
 @Transactional

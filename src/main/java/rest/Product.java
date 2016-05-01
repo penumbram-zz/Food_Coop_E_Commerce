@@ -1,6 +1,9 @@
-package test;
+package rest;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 /**
@@ -31,6 +34,8 @@ public class Product extends AbstractTimestampEntity {
     private String price;
     private String sellUnit;
     private String quantity;
+    @JsonIgnore
+    private Producer producer;
 
     public int getId() {
         return id;
@@ -95,5 +100,14 @@ public class Product extends AbstractTimestampEntity {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
+
+    public Producer getProducer() {
+        return producer;
+    }
+
+    public void setProducer(Producer producer) {
+        this.producer = producer;
+    }
+
 
 }

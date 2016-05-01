@@ -5,7 +5,7 @@
 
 <!--suppress ALL -->
 <hibernate-mapping>
-    <class name="test.Member" table="Member">
+    <class name="rest.Member" table="Member">
         <meta attribute="class-description">
             This class contains the member details.
         </meta>

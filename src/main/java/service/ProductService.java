@@ -4,9 +4,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import test.Main;
-import test.Member;
-import test.Product;
+import rest.Main;
+import rest.Product;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;

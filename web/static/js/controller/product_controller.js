@@ -16,6 +16,13 @@ App.controller('ProductController', ['$scope', 'ProductService', function($scope
                   );
           };
 
+           self.toggleModal = function(){
+               //noinspection JSUnresolvedVariable
+               console.log(product.productName);
+               //noinspection JSUnresolvedVariable
+               console.log(product.productDescription);
+            };
+
           self.getAllProducts();
 
       }]);

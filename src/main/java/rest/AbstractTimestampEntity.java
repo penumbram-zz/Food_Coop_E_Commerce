@@ -1,4 +1,4 @@
-package test;
+package rest;
 
 import javax.persistence.*;
 import java.util.Date;
