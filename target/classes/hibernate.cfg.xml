@@ -19,5 +19,6 @@
         <mapping class="rest.Product" resource="Product.hbm.xml"/>
         <mapping class="rest.Producer" resource="Producer.hbm.xml"/>
         <mapping class="rest.ProductCategory" resource="ProductCategory.hbm.xml"/>
+        <mapping class="rest.News" />
     </session-factory>
 </hibernate-configuration>

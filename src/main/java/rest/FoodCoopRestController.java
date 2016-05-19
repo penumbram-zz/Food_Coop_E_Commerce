@@ -7,8 +7,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+import service.NewsFeedService;
 import service.ProductService;
 import service.user.LoginService;
+import service.user.PermissionService;
 import service.user.UserService;
 
 import java.util.List;
@@ -25,6 +27,10 @@ public class FoodCoopRestController {
     LoginService loginService;
     @Autowired
     ProductService productService;
+    @Autowired
+    NewsFeedService newsFeedService;
+    @Autowired
+    PermissionService permissionService;
 
 
     //-------------------Users---------------------------------------------------------------------
@@ -168,5 +174,24 @@ public class FoodCoopRestController {
     //-------------------Product---------------------------------------------------------------------
     //-------------------Product---------------------------------------------------------------------
     //-------------------Product---------------------------------------------------------------------
+
+
+
+    //-------------------NewsFeed---------------------------------------------------------------------
+    //-------------------NewsFeed---------------------------------------------------------------------
+    //-------------------NewsFeed---------------------------------------------------------------------
+
+    @RequestMapping(value = "/news/", method = RequestMethod.GET)
+    public ResponseEntity<List<News>> getAllNews() {
+        List<News> news = newsFeedService.getAllNews();
+        if(news.isEmpty()){
+            return new ResponseEntity<List<News>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<News>>(news, HttpStatus.OK);
+    }
+
+    //-------------------NewsFeed---------------------------------------------------------------------
+    //-------------------NewsFeed---------------------------------------------------------------------
+    //-------------------NewsFeed---------------------------------------------------------------------
 
 }

@@ -24,5 +24,6 @@
         <property name="timestamp" column="timestamp" type="date"/>
         <property name="about" column="about" type="string"/>
         <property name="photoUrl" column="photo_url" type="string"/>
+        <property name="permission" column="permission" type="string"/>
     </class>
 </hibernate-mapping>

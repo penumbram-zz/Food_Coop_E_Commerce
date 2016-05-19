@@ -37,6 +37,7 @@ public class Member extends AbstractTimestampEntity {
     private String phoneNumber;
     private String about;
     private String photoUrl;
+    private String permission;
 
     public int getId() {
         return id;
@@ -139,5 +140,13 @@ public class Member extends AbstractTimestampEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPermission() {
+        return permission;
+    }
+
+    public void setPermission(String permission) {
+        this.permission = permission;
     }
 }

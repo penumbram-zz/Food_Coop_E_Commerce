@@ -2,14 +2,10 @@
  * Created by tolgacaner on 25/04/16.
  */
 
-App.controller('LoginController', ['$scope', 'LoginService', function ($scope, LoginService) {
+App.controller('LoginController', ['$scope', 'LoginService', 'sharedProperties', function ($scope, LoginService, sharedProperties) {
             var self = this;
             self.user= {username:'',password:'',first_name:'',last_name:''};
             self.success = null;
-
-    self.test = function () {
-        console.log("rest function called");
-    }
 
     self.login = function(user){
         console.log("Logging in");
@@ -23,11 +19,10 @@ App.controller('LoginController', ['$scope', 'LoginService', function ($scope, L
                                 console.log("login failure");
                             } else {
                                 console.log(response.id);
+                                sharedProperties.setUser(response);
                                 self.success = true;
                                 self.user.first_name = response.firstName;
                                 self.user.last_name = response.lastName;
-                                console.log(self.user.firstname);
-                                console.log(self.user.lastname);
                                 console.log("login success");
                             }
                         },
@@ -38,3 +33,5 @@ App.controller('LoginController', ['$scope', 'LoginService', function ($scope, L
 
             };
 }]);
+
+
