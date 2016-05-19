@@ -2,7 +2,7 @@
  * Created by tolgacaner on 25/04/16.
  */
 
-App.controller('LoginController', ['$scope', 'LoginService', 'sharedProperties', function ($scope, LoginService, sharedProperties) {
+App.controller('LoginController', ['$scope', '$location', 'LoginService', 'sharedProperties', function ($scope,$location, LoginService, sharedProperties) {
             var self = this;
             self.user= {username:'',password:'',first_name:'',last_name:''};
             self.success = null;
@@ -24,6 +24,7 @@ App.controller('LoginController', ['$scope', 'LoginService', 'sharedProperties',
                                 self.user.first_name = response.firstName;
                                 self.user.last_name = response.lastName;
                                 console.log("login success");
+                                $location.path("/home");
                             }
                         },
                         function (errResponse) {

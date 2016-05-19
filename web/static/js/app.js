@@ -1,14 +1,28 @@
 'use strict';
 
 var roles = {
-    superUser: 0,
-    admin: 1,
-    user: 2
+    admin: "ADMIN",
+    user: "MEMBER"
 };
 
-var routeForUnauthorizedAccess = '/SomeAngularRouteForUnauthorizedAccess';
+var routeForUnauthorizedAccess = '/unauthorized';
 
 var App = angular.module('myApp',['ngRoute','ngResource']);
+
+//Service
+
+App.service('sharedProperties', function () {
+    var user;
+
+    return {
+        getUser: function () {
+            return user;
+        },
+        setUser: function(value) {
+            user = value;
+        }
+    };
+});
 
 function isNull(aVariable) {
     if (aVariable == null || aVariable === undefined || aVariable === 'undefined' || aVariable == undefined || aVariable == 'undefined' || aVariable === null)
@@ -21,7 +35,26 @@ App.config(['$routeProvider', function($routeProvider, $locationProvider) {
         .when('/home', {
             templateUrl: 'home',
             controller : "LoginController as ctrl",
-            resolve: {}
+            resolve: {
+                "check":function($location,sharedProperties){
+                    var user = sharedProperties.getUser();
+                    if(isNull(user)){
+                        $location.path('/login');    //redirect user to login.
+                    }
+                }
+            }
+        })
+        .when('/login', {
+            templateUrl: 'login',
+            controller : "LoginController as ctrl",
+            resolve: {
+                "check":function($location,sharedProperties){
+                    var user = sharedProperties.getUser();
+                    if(!isNull(user)){
+                        $location.path('/home');    //redirect user to login.
+                    }
+                }
+            }
         })
         .when('/products', {
             templateUrl: 'products',
@@ -168,6 +201,8 @@ App.factory('authorizationService', function ($resource, $q, $rootScope, $locati
                     parentPointer.permissionModel.permission = sharedProperties.getUser().permission;
                     parentPointer.permissionModel.isPermissionLoaded = true;
                     parentPointer.getPermission(parentPointer.permissionModel, roleCollection, deferred);
+                } else {
+                    $location.path(routeForUnauthorizedAccess);
                 }
 
             }
@@ -180,32 +215,16 @@ App.factory('authorizationService', function ($resource, $q, $rootScope, $locati
         //'deferred' is the object through which we shall resolve promise
         getPermission: function (permissionModel, roleCollection, deferred) {
             var ifPermissionPassed = false;
-
-            angular.forEach(roleCollection, function (role) {
-                switch (role) {
-                    case roles.superUser:
-                        if (permissionModel.permission.isSuperUser) {
-                            ifPermissionPassed = true;
-                        }
-                        break;
-                    case roles.admin:
-                        if (permissionModel.permission.isAdministrator) {
-                            ifPermissionPassed = true;
-                        }
-                        break;
-                    case roles.user:
-                        if (permissionModel.permission.isUser) {
-                            ifPermissionPassed = true;
-                        }
-                        break;
-                    default:
-                        ifPermissionPassed = false;
-                }
-            });
+            console.log("PermissionModel.Permission:");
+            console.log(permissionModel.permission);
+            if (permissionModel.permission == "ADMIN" || permissionModel.permission == "MEMBER")
+                ifPermissionPassed = true;
+            
             if (!ifPermissionPassed) {
                 //If user does not have required access,
                 //we will route the user to unauthorized access page
                 $location.path(routeForUnauthorizedAccess);
+                console.log("permission is not passed");
                 //As there could be some delay when location change event happens,
                 //we will keep a watch on $locationChangeSuccess event
                 // and would resolve promise when this event occurs.
@@ -219,17 +238,3 @@ App.factory('authorizationService', function ($resource, $q, $rootScope, $locati
     };
 });
 
-//Service
-
-App.service('sharedProperties', function () {
-    var user;
-
-    return {
-        getUser: function () {
-            return user;
-        },
-        setUser: function(value) {
-            user = value;
-        }
-    };
-});

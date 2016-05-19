@@ -22,6 +22,11 @@ public class MainMappingController {
 
     @RequestMapping(value="/home")
     public String getSubpageHome() {
+        return "sub/home";
+    }
+
+    @RequestMapping(value="/login")
+    public String getSubpageLogin() {
         return "sub/login";
     }
 
