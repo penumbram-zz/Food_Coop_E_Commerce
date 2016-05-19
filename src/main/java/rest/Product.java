@@ -2,13 +2,19 @@ package rest;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
 /**
  * Created by tolgacaner on 26/04/16.
  */
+@Data
+@Entity
 public class Product extends AbstractTimestampEntity {
 
     public Product() {
@@ -34,8 +40,18 @@ public class Product extends AbstractTimestampEntity {
     private String price;
     private String sellUnit;
     private String quantity;
-    @JsonIgnore
+/*
+    @JsonProperty
+    @ManyToOne(optional = false)
+    */
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToOne(optional = false)
     private Producer producer;
+
+    /*
+    @OneToMany(mappedBy = "product")
+    private List<Comment> commentList;
+*/
 
     public int getId() {
         return id;

@@ -25,6 +25,11 @@ public class MainMappingController {
         return "sub/home";
     }
 
+    @RequestMapping(value="/popupTmpl")
+    public String getSubpagePopupTmpl() {
+        return "sub/popupTmpl";
+    }
+
     @RequestMapping(value="/login")
     public String getSubpageLogin() {
         return "sub/login";

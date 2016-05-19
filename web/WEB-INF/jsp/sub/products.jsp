@@ -10,6 +10,7 @@
 				<th>Price</th>
 				<th>Sell Unit</th>
 				<th>Quantity</th>
+				<th>Producer</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -20,6 +21,7 @@
 				<td><span ng-bind="p.price"></span></td>
 				<td><span ng-bind="p.sellUnit"></span></td>
 				<td><span ng-bind="p.quantity"></span></td>
+				<td><a href="" ng-click="showProducer(p.producer)"><span ng-bind="p.producer.firstName"></span> <span ng-bind="p.producer.lastName"></span></a></td>
 			</tr>
 			</tbody>
 		</table>

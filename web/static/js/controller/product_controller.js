@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('ProductController', ['$scope', 'ProductService', function($scope, ProductService) {
+App.controller('ProductController', ['$scope', 'ProductService', 'ngDialog', function($scope, ProductService, ngDialog) {
           var self = this;
           self.products=[];
               
@@ -11,7 +11,7 @@ App.controller('ProductController', ['$scope', 'ProductService', function($scope
                           self.products = p;
                       },
                       function(errResponse){
-                          console.error('Error while fetching Currencies');
+                          console.error('Error while fetching Products');
                       }
                   );
           };
@@ -24,5 +24,9 @@ App.controller('ProductController', ['$scope', 'ProductService', function($scope
             };
 
           self.getAllProducts();
+
+            $scope.showProducer = function(msg) {
+                ngDialog.open({ template: 'popupTmpl', className: 'ngdialog-theme-default', data: msg });
+            };
 
       }]);

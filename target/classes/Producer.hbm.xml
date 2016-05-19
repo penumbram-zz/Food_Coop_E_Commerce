@@ -5,7 +5,7 @@
 
 <!--suppress ALL -->
 <hibernate-mapping>
-    <union-subclass name="rest.Producer" table="Producer" extends="rest.Member">
+    <union-subclass name="rest.Producer" table="Producer" extends="rest.Member" lazy="false">
         <meta attribute="class-description">
             This class contains the producer details.
         </meta>

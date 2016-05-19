@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <jackson.version>2.5.0</jackson.version>
+        <jackson.version>2.6.0</jackson.version>
     </properties>
 
     <groupId>groupId</groupId>
