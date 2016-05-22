@@ -2,7 +2,7 @@
 
 var roles = {
     admin: "ADMIN",
-    user: "MEMBER"
+    member: "MEMBER"
 };
 
 var routeForUnauthorizedAccess = '/unauthorized';
@@ -34,7 +34,7 @@ App.config(['$routeProvider', function($routeProvider, $locationProvider) {
     $routeProvider
         .when('/home', {
             templateUrl: 'home',
-            controller : "LoginController as ctrl",
+            controller : "HomeController as hCtrl",
             resolve: {
                 "check":function($location,sharedProperties){
                     var user = sharedProperties.getUser();
@@ -65,19 +65,51 @@ App.config(['$routeProvider', function($routeProvider, $locationProvider) {
                 //resolve is a great feature in angular, which ensures that a route
                 //controller (in this case ProductController ) is invoked for a route
                 //only after the promises mentioned under it are resolved.
+                isSalesSession:function($location,sharedProperties){
+                    var user = sharedProperties.getUser();
+                    if (!isNull(user)) {
+                        if (user.permission == "ADMIN") {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                },/*
                 permission: function(authorizationService, $route) {
-                    return authorizationService.permissionCheck([roles.superUser]);
-                },
+                    return authorizationService.permissionCheck([roles.admin]);
+                }*/
             }
         }).when('/news', {
             templateUrl: 'news',
             controller : "NewsFeedController as nCtrl",
-            resolve: {}
+            resolve: {
+                permission: function(authorizationService, $route) {
+                    return authorizationService.permissionCheck([roles.member]);
+                },
+            }
         }).when('/contact', {
             templateUrl: 'contact',
             controller : "ContactController as contactCtrl",
             resolve: {}
-        }).when('/superUserSpecificRoute', {
+        }).when('/userManagement', {
+        templateUrl: 'userManagement',
+        controller : "UserController as ctrl",
+        resolve: {
+            permission: function(authorizationService, $route) {
+                return authorizationService.permissionCheck([roles.admin]);
+            },
+        }
+    }).when('/productManagement', {
+        templateUrl: 'productManagement',
+        controller : "ProductController as pmCtrl",
+        resolve: {
+            permission: function(authorizationService, $route) {
+                return authorizationService.permissionCheck([roles.admin]);
+            },
+        }
+    }).when('/superUserSpecificRoute', {
             templateUrl: '/templates/superUser.html', //path of the view/template of route
             caseInsensitiveMatch: true,
             controller: 'superUserController', //controller which would be used for the route
@@ -97,7 +129,7 @@ App.config(['$routeProvider', function($routeProvider, $locationProvider) {
             controller: 'userController',
             resolve: {
                 permission: function(authorizationService, $route) {
-                    return authorizationService.permissionCheck([roles.user]);
+                    return authorizationService.permissionCheck([roles.member]);
                 },
             }
         })
@@ -173,13 +205,26 @@ App.factory('authorizationService', function ($resource, $q, $rootScope, $locati
 
             //Checking if permission object(list of roles for logged in user)
             //is already filled from service
+            var user = sharedProperties.getUser();
+            console.log("loggin user");
+            console.log(user);
+            console.log("logged user");
+            if (!isNull(user)) {
+                parentPointer.permissionModel.permission = sharedProperties.getUser().permission;
+                parentPointer.permissionModel.isPermissionLoaded = true;
+                parentPointer.getPermission(parentPointer.permissionModel, roleCollection, deferred);
+            } else {
+                $location.path(routeForUnauthorizedAccess);
+            }
+
+            /*
             if (this.permissionModel.isPermissionLoaded) {
                 //Check if the current user has required role to access the route
                 this.getPermission(this.permissionModel, roleCollection, deferred);
             } else {
                 //if permission is not obtained yet, we will get it from  server.
                 // 'api/permissionService' is the path of server web service , used for this example.
-                   /**
+
                 $resource('/permission').get().$promise.then(function (response) {
                     //when server service responds then we will fill the permission object
                     parentPointer.permissionModel.permission = response;
@@ -191,21 +236,9 @@ App.factory('authorizationService', function ($resource, $q, $rootScope, $locati
                     //Check if the current user has required role to access the route
                     parentPointer.getPermission(parentPointer.permissionModel, roleCollection, deferred);
                 });
-                **/
-
-                var user = sharedProperties.getUser();
-                console.log("loggin user");
-                console.log(user);
-                console.log("logged user");
-                if (!isNull(user)) {
-                    parentPointer.permissionModel.permission = sharedProperties.getUser().permission;
-                    parentPointer.permissionModel.isPermissionLoaded = true;
-                    parentPointer.getPermission(parentPointer.permissionModel, roleCollection, deferred);
-                } else {
-                    $location.path(routeForUnauthorizedAccess);
-                }
-
+                
             }
+            */
             return deferred.promise;
         },
 

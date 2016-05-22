@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class MainMappingController {
 
-    @RequestMapping("UserManagement")
-    public String mainPage() {
-        return "UserManagement";
-    }
-
     @RequestMapping("FoodCoopApp")
     public String welcomePage() {
         return "Welcome";
@@ -23,6 +18,16 @@ public class MainMappingController {
     @RequestMapping(value="/home")
     public String getSubpageHome() {
         return "sub/home";
+    }
+
+    @RequestMapping("/userManagement")
+    public String getSubpageUserManagement() {
+        return "sub/user_management";
+    }
+
+    @RequestMapping("/productManagement")
+    public String getSubpageProductManagement() {
+        return "sub/product_management";
     }
 
     @RequestMapping(value="/popupTmpl")
@@ -53,31 +58,6 @@ public class MainMappingController {
     @RequestMapping(value="/unauthorized")
     public String getUnauthorized() {
         return "sub/unauthorized";
-    }
-
-    @RequestMapping(value="/phones")
-    public String getPhonesTemplate() {
-        return "template/item_phones";
-    }
-
-    @RequestMapping(value="/printers")
-    public String getPrintersTemplate() {
-        return "template/item_printers";
-    }
-
-    @RequestMapping(value="/computerdetails")
-    public String getComputerDetailsTemplate() {
-        return "template/item_computer_details";
-    }
-
-    @RequestMapping(value="/phonedetails")
-    public String getPhoneDetailsTemplate() {
-        return "template/item_phone_details";
-    }
-
-    @RequestMapping(value="/printerdetails")
-    public String getPrinterDetailsTemplate() {
-        return "template/item_printer_details";
     }
 
 }

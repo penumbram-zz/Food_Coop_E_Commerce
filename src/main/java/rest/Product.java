@@ -9,6 +9,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.NonNull;
 
 /**
  * Created by tolgacaner on 26/04/16.
@@ -40,10 +41,12 @@ public class Product extends AbstractTimestampEntity {
     private String price;
     private String sellUnit;
     private String quantity;
-/*
+
+    /*
     @JsonProperty
     @ManyToOne(optional = false)
     */
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne(optional = false)
     private Producer producer;
@@ -51,7 +54,7 @@ public class Product extends AbstractTimestampEntity {
     /*
     @OneToMany(mappedBy = "product")
     private List<Comment> commentList;
-*/
+    */
 
     public int getId() {
         return id;

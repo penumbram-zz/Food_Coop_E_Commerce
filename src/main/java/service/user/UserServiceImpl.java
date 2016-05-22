@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService{
 	static{
 	//	members= populateDummyUsers();
 		Session session = Main.getSession();
-		Query query = session.createQuery("from Member");
+		Query query = session.createQuery("from Member").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		members = query.list();
 	}
 
@@ -62,7 +63,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public void updateUser(Member member) {
-		int index = members.indexOf(member);
+		Member mMember = findById(member.getId());
+		int index = members.indexOf(mMember);
 		members.set(index, member);
 		Session session = Main.getSession();
 		Transaction tx = session.beginTransaction();

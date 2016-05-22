@@ -31,9 +31,11 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
 		    },
 		    
 		    updateUser: function(user, id){
+				console.log("updateUser is GETTING CALLED HERE");
 					return $http.put('http://localhost:8080/user/'+id, user)
 							.then(
 									function(response){
+										console.log(response);
 										return response.data;
 									}, 
 									function(errResponse){

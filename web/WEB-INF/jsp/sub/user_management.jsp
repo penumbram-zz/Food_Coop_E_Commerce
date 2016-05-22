@@ -1,36 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-  <head>  
-    <title>Food Coop Admin Panel</title>
-    <style>
-      .username.ng-valid {
-          background-color: lightgreen;
-      }
-      .username.ng-dirty.ng-invalid-required {
-          background-color: red;
-      }
-      .username.ng-dirty.ng-invalid-minlength {
-          background-color: yellow;
-      }
+<style>
+    .username.ng-valid {
+        background-color: lightgreen;
+    }
+    .username.ng-dirty.ng-invalid-required {
+        background-color: red;
+    }
+    .username.ng-dirty.ng-invalid-minlength {
+        background-color: yellow;
+    }
 
-      .email.ng-valid {
-          background-color: lightgreen;
-      }
-      .email.ng-dirty.ng-invalid-required {
-          background-color: red;
-      }
-      .email.ng-dirty.ng-invalid-email {
-          background-color: yellow;
-      }
+    .email.ng-valid {
+        background-color: lightgreen;
+    }
+    .email.ng-dirty.ng-invalid-required {
+        background-color: red;
+    }
+    .email.ng-dirty.ng-invalid-email {
+        background-color: yellow;
+    }
 
-    </style>
-      <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-     <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
-  </head>
-  <body ng-app="myApp" class="ng-cloak">
-      <div class="generic-container" ng-controller="UserController as ctrl">
+</style>
+      <div class="generic-container">
           <div class="panel panel-default">
               <div class="panel-heading"><span class="lead">Administrator Panel </span></div>
               <div class="formcontainer">
@@ -128,6 +118,16 @@
                       </div>
 
                       <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="file">Permission</label>
+                              <div class="col-md-7">
+                                  <input type="radio" ng-model="ctrl.user.permission" name="permission" value="MEMBER" checked/>Member<br>
+                                  <input type="radio" ng-model="ctrl.user.permission" name="permission" value="ADMIN" checked/>Admin<br>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
                           <div class="form-actions floatRight">
                               <input type="submit"  value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
                               <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
@@ -156,6 +156,7 @@
                               <th>Phone Number</th>
                               <th>About</th>
                               <th>Action</th>
+                              <th>Type</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -170,6 +171,7 @@
                               <td><span ng-bind="u.city"></span></td>
                               <td><span ng-bind="u.phoneNumber"></span></td>
                               <td><span ng-bind="u.about"></span></td>
+                              <td><span ng-bind="u.permission"></span></td>
                               <td>
                               <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
                               </td>
@@ -179,10 +181,3 @@
               </div>
           </div>
       </div>
-      
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-      <script src="<c:url value='/static/js/app.js' />"></script>
-      <script src="<c:url value='/static/js/service/user_service.js' />"></script>
-      <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
-  </body>
-</html>

@@ -1,11 +1,18 @@
-<div ng-model="ngDialogData" style="z-index:5000;">
+<style type="text/css">
+	td
+	{
+		padding:0 15px 0 15px;
+	}
+</style>
+
+<div ng-model="ngDialogData">
 	<div>
 		<h3>Producer Information</h3>
 		<table>
 			<tr>
 				<td>First Name:</td>
-				<td ng-bind="ngDialogData.firstName">
-				</td>
+				<td ng-bind="ngDialogData.firstName"></td>
+				<td rowspan="10"><img ng-src="{{ngDialogData.photoUrl}}" style="height: 5%;"></td>
 			</tr>
 			<tr>
 				<td>Last Name:</td>
@@ -53,8 +60,5 @@
 				</td>
 			</tr>
 		</table>
-	</div>
-	<div class="ngdialog-buttons">
-		<button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">Close</button>
 	</div>
 </div>

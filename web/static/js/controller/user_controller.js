@@ -28,6 +28,7 @@ App.controller('UserController', ['$scope', 'UserService', function($scope, User
           };
 
          self.updateUser = function(user, id){
+             console.log("updating user via controller");
               UserService.updateUser(user, id)
 		              .then(
 				              self.fetchAllUsers, 

@@ -31,8 +31,10 @@
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/cssmenu.css">
+    <link rel="stylesheet" href="/static/css/onoffswitch.css">
     <link rel="stylesheet" href="/static/css/ngDialog.css">
     <link rel="stylesheet" href="/static/css/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="/static/css/app.css">
   </head>
   <body ng-app="myApp">
     <div ng-controller="TopMenuCtrl">
@@ -58,5 +60,8 @@
     <script src="<c:url value='/static/js/controller/product_controller.js' />"></script>
     <script src="<c:url value='/static/js/service/news_feed_service.js' />"></script>
     <script src="<c:url value='/static/js/controller/news_feed_controller.js' />"></script>
+    <script src="<c:url value='/static/js/controller/home_controller.js' />"></script>
+    <script src="<c:url value='/static/js/service/user_service.js' />"></script>
+    <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
   </body>
 </html>
