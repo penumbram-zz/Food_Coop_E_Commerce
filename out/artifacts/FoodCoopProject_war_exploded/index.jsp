@@ -30,11 +30,11 @@
     <title>Welcome to Food-Coop</title>
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/cssmenu.css">
-    <link rel="stylesheet" href="/static/css/onoffswitch.css">
-    <link rel="stylesheet" href="/static/css/ngDialog.css">
-    <link rel="stylesheet" href="/static/css/ngDialog-theme-default.css">
-    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="static/css/cssmenu.css">
+    <link rel="stylesheet" href="static/css/onoffswitch.css">
+    <link rel="stylesheet" href="static/css/ngDialog.css">
+    <link rel="stylesheet" href="static/css/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="static/css/app.css">
   </head>
   <body ng-app="myApp">
     <div ng-controller="TopMenuCtrl">
@@ -51,17 +51,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.js"></script>
-    <script src="<c:url value='/static/js/libs/ngDialog.js' />"></script>
-    <script src="<c:url value='/static/js/app.js' />"></script>
-    <script src="<c:url value='/static/js/controller/top_menu_controller.js' />"></script>
-    <script src="<c:url value='/static/js/service/login_service.js' />"></script>
-    <script src="<c:url value='/static/js/controller/login_controller.js' />"></script>
-    <script src="<c:url value='/static/js/service/product_service.js' />"></script>
-    <script src="<c:url value='/static/js/controller/product_controller.js' />"></script>
-    <script src="<c:url value='/static/js/service/news_feed_service.js' />"></script>
-    <script src="<c:url value='/static/js/controller/news_feed_controller.js' />"></script>
-    <script src="<c:url value='/static/js/controller/home_controller.js' />"></script>
-    <script src="<c:url value='/static/js/service/user_service.js' />"></script>
-    <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
+    <script src="<c:url value='static/js/libs/ngDialog.js' />"></script>
+    <script src="<c:url value='static/js/app.js' />"></script>
+    <script src="<c:url value='static/js/controller/top_menu_controller.js' />"></script>
+    <script src="<c:url value='static/js/service/login_service.js' />"></script>
+    <script src="<c:url value='static/js/controller/login_controller.js' />"></script>
+    <script src="<c:url value='static/js/service/product_service.js' />"></script>
+    <script src="<c:url value='static/js/controller/product_controller.js' />"></script>
+    <script src="<c:url value='static/js/service/news_feed_service.js' />"></script>
+    <script src="<c:url value='static/js/controller/news_feed_controller.js' />"></script>
+    <script src="<c:url value='static/js/controller/home_controller.js' />"></script>
+    <script src="<c:url value='static/js/service/user_service.js' />"></script>
+    <script src="<c:url value='static/js/controller/user_controller.js' />"></script>
   </body>
 </html>

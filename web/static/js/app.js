@@ -81,8 +81,8 @@ App.config(['$routeProvider', function($routeProvider, $locationProvider) {
                     return authorizationService.permissionCheck([roles.admin]);
                 }*/
             }
-        }).when('/news', {
-            templateUrl: 'news',
+        }).when('/coop', {
+            templateUrl: 'coop',
             controller : "NewsFeedController as nCtrl",
             resolve: {
                 permission: function(authorizationService, $route) {
@@ -104,6 +104,14 @@ App.config(['$routeProvider', function($routeProvider, $locationProvider) {
     }).when('/productManagement', {
         templateUrl: 'productManagement',
         controller : "ProductController as pmCtrl",
+        resolve: {
+            permission: function(authorizationService, $route) {
+                return authorizationService.permissionCheck([roles.admin]);
+            },
+        }
+    }).when('/newsManagement', {
+        templateUrl: 'newsManagement',
+        controller : "NewsFeedController as nCtrl",
         resolve: {
             permission: function(authorizationService, $route) {
                 return authorizationService.permissionCheck([roles.admin]);

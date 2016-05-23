@@ -11,6 +11,7 @@
 			<ul>
 				<li><a ng-href="#/userManagement">Manage Users</a></li>
 				<li><a ng-href="#/productManagement">Manage Products</a></li>
+				<li><a ng-href="#/newsManagement">Manage News</a></li>
 				<li><a href="" ng-click="logout()" >Logout</a></li>
 			</ul>
 		</div>

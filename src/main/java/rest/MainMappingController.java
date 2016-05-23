@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by tolgacaner on 10/04/16.
  */
 @Controller
-@RequestMapping("/")
 public class MainMappingController {
 
     @RequestMapping("FoodCoopApp")
@@ -30,6 +29,11 @@ public class MainMappingController {
         return "sub/product_management";
     }
 
+    @RequestMapping("/newsManagement")
+    public String getSubpageNewsManagement() {
+        return "sub/news_management";
+    }
+
     @RequestMapping(value="/popupTmpl")
     public String getSubpagePopupTmpl() {
         return "sub/popupTmpl";
@@ -45,9 +49,9 @@ public class MainMappingController {
         return "sub/products";
     }
 
-    @RequestMapping(value="/news")
+    @RequestMapping(value="/coop")
     public String getSubpageCoop() {
-        return "sub/news";
+        return "sub/coop";
     }
 
     @RequestMapping(value="/contact")

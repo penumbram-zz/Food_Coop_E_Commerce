@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3622408085">
+  <component name="DataSourceManagerImpl" format="xml" hash="1603958416">
     <data-source source="LOCAL" name="MySQL - foodcoopdb@localhost" uuid="900a2b88-28d4-47bb-874c-1e6fb144bf45">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

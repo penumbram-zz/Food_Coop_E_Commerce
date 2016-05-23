@@ -10,7 +10,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr ng-repeat="n in nCtrl.news">
+			<tr ng-repeat="n in nCtrl.newsList">
 				<td><span ng-bind="n.name"></span></td>
 				<td><span ng-bind="n.description"></span></td>
 				<td><img style="height:100px; width:auto;" ng-src="{{n.photoUrl}}"></td>

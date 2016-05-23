@@ -7,7 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-import service.NewsFeedService;
+import service.news.NewsFeedService;
+import service.news.NewsFeedServiceImpl;
 import service.product.ProducerService;
 import service.product.ProductService;
 import service.product.ProductsAndProducers;
@@ -260,8 +261,7 @@ public class FoodCoopRestController {
     //-------------------Product---------------------------------------------------------------------
 
 
-
-    //-------------------NewsFeed---------------------------------------------------------------------
+//-------------------NewsFeed---------------------------------------------------------------------
     //-------------------NewsFeed---------------------------------------------------------------------
     //-------------------NewsFeed---------------------------------------------------------------------
 
@@ -272,6 +272,88 @@ public class FoodCoopRestController {
             return new ResponseEntity<List<News>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
         }
         return new ResponseEntity<List<News>>(news, HttpStatus.OK);
+    }
+
+    //-------------------Retrieve Single News--------------------------------------------------------
+
+    @RequestMapping(value = "/news/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<News> getNews(@PathVariable("id") long id) {
+        System.out.println("Fetching News with id " + id);
+        News news = newsFeedService.findById(id);
+        if (news == null) {
+            System.out.println("News with id " + id + " not found");
+            return new ResponseEntity<News>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<News>(news, HttpStatus.OK);
+    }
+
+
+
+    //-------------------Create a News--------------------------------------------------------
+
+    @RequestMapping(value = "/news/", method = RequestMethod.POST)
+    public ResponseEntity<Void> createNews(@RequestBody News news, UriComponentsBuilder ucBuilder) {
+        System.out.println("Creating News " + news.getName());
+
+        if (newsFeedService.isNewsExist(news)) {
+            System.out.println("A News with name " + news.getName() + " already exist");
+            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+        }
+
+        newsFeedService.saveNews(news);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/news/{id}").buildAndExpand(news.getId()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+    }
+
+
+
+    //------------------- Update a News --------------------------------------------------------
+
+    @RequestMapping(value = "/news/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<News> updateNews(@PathVariable("id") long id, @RequestBody News news) {
+        System.out.println("Updating News " + id);
+
+        News currentNews = newsFeedService.findById(id);
+
+        if (currentNews==null) {
+            System.out.println("News with id " + id + " not found");
+            return new ResponseEntity<News>(HttpStatus.NOT_FOUND);
+        }
+
+        newsFeedService.updateNews(news);
+        return new ResponseEntity<News>(currentNews, HttpStatus.OK);
+    }
+
+
+
+    //------------------- Delete a News --------------------------------------------------------
+
+    @RequestMapping(value = "/news/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<News> deleteNews(@PathVariable("id") long id) {
+        System.out.println("Fetching & Deleting News with id " + id);
+
+        News news = newsFeedService.findById(id);
+        if (news == null) {
+            System.out.println("Unable to delete. News with id " + id + " not found");
+            return new ResponseEntity<News>(HttpStatus.NOT_FOUND);
+        }
+
+        newsFeedService.deleteNewsById(id);
+        return new ResponseEntity<News>(HttpStatus.NO_CONTENT);
+    }
+
+
+
+    //------------------- Delete All News --------------------------------------------------------
+
+    @RequestMapping(value = "/news/", method = RequestMethod.DELETE)
+    public ResponseEntity<News> deleteAllNews() {
+        System.out.println("Deleting All News");
+
+        newsFeedService.deleteAllNews();
+        return new ResponseEntity<News>(HttpStatus.NO_CONTENT);
     }
 
     //-------------------NewsFeed---------------------------------------------------------------------
