@@ -1,9 +1,12 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="FoodCooper">
-    <output-path>$PROJECT_DIR$/out/artifacts/FoodCooper</output-path>
-    <root id="archive" name="FoodCooper.war">
+  <artifact type="war" build-on-make="true" name="ROOT">
+    <output-path>$PROJECT_DIR$/out/artifacts/ROOT</output-path>
+    <root id="archive" name="ROOT.war">
       <element id="directory" name="WEB-INF">
         <element id="dir-copy" path="$PROJECT_DIR$/web/WEB-INF" />
+        <element id="directory" name="classes">
+          <element id="module-output" name="FoodCoopProject" />
+        </element>
       </element>
       <element id="javaee-facet-resources" facet="FoodCoopProject/web/Web" />
       <element id="directory" name="classes">
