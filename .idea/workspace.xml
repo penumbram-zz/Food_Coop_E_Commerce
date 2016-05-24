@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f0d22d9b-84e0-44a0-9b92-ee3f6686df13" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FoodCoopProject.iml" afterPath="$PROJECT_DIR$/FoodCoopProject.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <ignored path="FoodCoopProject.iws" />
@@ -97,8 +96,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="81" column="49" selection-start-line="81" selection-start-column="49" selection-end-line="81" selection-end-column="49" />
+            <state relative-caret-position="525">
+              <caret line="67" column="61" selection-start-line="67" selection-start-column="61" selection-end-line="67" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -1029,12 +1028,12 @@
       <workItem from="1463954903153" duration="8451000" />
       <workItem from="1464019631281" duration="840000" />
       <workItem from="1464064762611" duration="1853000" />
-      <workItem from="1464079877999" duration="1160000" />
+      <workItem from="1464079877999" duration="1362000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174455000" />
+    <option name="totallyTimeSpent" value="174657000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1711,8 +1710,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="81" column="49" selection-start-line="81" selection-start-column="49" selection-end-line="81" selection-end-column="49" />
+        <state relative-caret-position="525">
+          <caret line="67" column="61" selection-start-line="67" selection-start-column="61" selection-end-line="67" selection-end-column="61" />
           <folding />
         </state>
       </provider>
