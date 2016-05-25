@@ -2,6 +2,7 @@ package service.user;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rest.Main;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Service("permissionService")
 @Transactional
+@Controller
 public class PermissionService {
 
     public String getUserPermissionLevel() {

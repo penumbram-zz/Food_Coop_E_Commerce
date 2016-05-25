@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rest.Main;
@@ -14,6 +15,7 @@ import rest.News;
 
 @Service("newFeedService")
 @Transactional
+@Controller
 public class NewsFeedServiceImpl implements NewsFeedService {
 
     private static final AtomicLong counter = new AtomicLong();

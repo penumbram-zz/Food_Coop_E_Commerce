@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rest.Main;
@@ -15,6 +16,7 @@ import rest.Product;
 
 @Service("productService")
 @Transactional
+@Controller
 public class ProductServiceImpl implements ProductService {
 
 	private static final AtomicLong counter = new AtomicLong();

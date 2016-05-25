@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="asdasd">
+    <output-path>$PROJECT_DIR$/out/artifacts/asdasd</output-path>
+    <root id="archive" name="asdasd.war">
+      <element id="directory" name="WEB-INF">
+        <element id="dir-copy" path="$PROJECT_DIR$/web/WEB-INF" />
+        <element id="directory" name="classes">
+          <element id="module-output" name="FoodCoopProject" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="FoodCoopProject/web/Web" />
+      <element id="directory" name="classes">
+        <element id="module-output" name="FoodCoopProject" />
+      </element>
+      <element id="directory" name="static">
+        <element id="dir-copy" path="$PROJECT_DIR$/web/static" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/web/index.jsp" />
+    </root>
+  </artifact>
+</component>
