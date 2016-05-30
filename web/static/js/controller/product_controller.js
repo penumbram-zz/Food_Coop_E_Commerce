@@ -42,10 +42,10 @@ App.controller('ProductController', ['$scope', '$rootScope', 'ProductService', '
 
     self.updateProduct = function(product, id){
         console.log("updating product in ASDASD");
-        product.producer.id = self.producer.id;
-        product.producer.firstName = self.producer.firstName;
-        product.producer.lastName = self.producer.lastName;
-        console.log(product.producer.firstName + " " + product.producer.lastName);
+        console.log(product.producer.id);
+        if (!isNull(self.producer)) {
+            product.producer = self.producer;
+        }
         ProductService.updateProduct(product, id)
             .then(
                 self.fetchAllProducts,
@@ -68,7 +68,10 @@ App.controller('ProductController', ['$scope', '$rootScope', 'ProductService', '
     self.fetchAllProducts();
 
     self.submit = function() {
-        if(self.product.id==null){
+        if(self.product.id == null){
+            self.product.producer = self.producer;
+            console.log("creating product");
+            console.log("Producer: " + self.product.producer.firstName + " - " + self.product.producer.lastName);
             self.createProduct(self.product);
         }else{
             self.updateProduct(self.product, self.product.id);
@@ -91,9 +94,12 @@ App.controller('ProductController', ['$scope', '$rootScope', 'ProductService', '
 
     self.remove = function(id){
         console.log('id to be deleted', id);
-        if(self.product.id === id) {//clean form if the product to be deleted is shown there.
-            self.reset();
+        if (!isNull(self.product)) {
+            if(self.product.id === id) {//clean form if the product to be deleted is shown there.
+                self.reset();
+            }
         }
+
         self.deleteProduct(id);
     };
 
@@ -117,12 +123,11 @@ App.controller('ProductController', ['$scope', '$rootScope', 'ProductService', '
         ngDialog.open({ template: 'popupTmpl', className: 'ngdialog-theme-default', data: msg });
     };
 
-    $scope.update = function(val)
+    $scope.update = function()
     {
-        self.producer = val;
-        $scope.selected = val;
-        // use $scope.selectedItem.code and $scope.selectedItem.name here
-        // for other stuff ...
+        console.log("update called here");
+        console.log("update called here");
+        self.producer = $scope.selected;
     }.bind($scope);
     /*
     $scope.onOffSwitch = function (val) {

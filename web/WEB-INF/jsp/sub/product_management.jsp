@@ -69,9 +69,30 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="file">Producer</label>
                         <div class="col-md-7">
-                            <select ng-model="selected" ng-options='producer as (producer.firstName + " " + producer.lastName) for producer in pmCtrl.producers' ng-change="update(producer)"><!--ng-repeat="producer in pmCtrl.producers"-->
+                            <select ng-model="selected" ng-value="{{ producer }}" ng-options='producer as (producer.firstName + " " + producer.lastName) for producer in pmCtrl.producers' ng-change="update()"><!--ng-repeat="producer in pmCtrl.producers"-->
                                <!-- <option ng-selected="pmCtrl.producer.id == producer.id" >{{producer.firstName}} {{producer.lastName}}</option>-->
                             </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">Location</label>
+                        <div class="col-md-7">
+                            <p>{{pmCtrl.producer.city}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">Company</label>
+                        <div class="col-md-7">
+                            <p>{{pmCtrl.producer.companyName}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">Farm Info</label>
+                        <div class="col-md-7">
+                            <p>{{pmCtrl.producer.farmsInformation}}</p>
                         </div>
                     </div>
                 </div>
